@@ -3,7 +3,8 @@ import pickle
 from nltk.stem import WordNetLemmatizer
 import re,string,unicodedata
 from nltk.corpus import stopwords
-
+import nltk
+nltk.download('stopwords')
 
 vector = pickle.load(open("vectorizer.pkl", 'rb'))
 model = pickle.load(open("model.pkl", 'rb'))
@@ -33,7 +34,6 @@ def lemmatize_text(text):
     return text
 
 stop_words = stopwords.words('english')
-stop_words.extend(['trump', 'Trump'])
 def remove_stopwords(text):
     ''' Remove stop words from text'''
     text = ' '.join(word for word in text.split(' ') if word not in stop_words)
