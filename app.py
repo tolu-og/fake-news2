@@ -3,8 +3,8 @@ import pickle
 from nltk.stem import WordNetLemmatizer
 import re,string
 # from nltk.corpus import stopwords
-import nltk
-nltk.download('stopwords')
+# import nltk
+# nltk.download('stopwords')
 
 vector = pickle.load(open("vectorizer.pkl", 'rb'))
 model = pickle.load(open("model.pkl", 'rb'))
