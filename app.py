@@ -1,7 +1,7 @@
 from flask import Flask, request, render_template
 import pickle
 from nltk.stem import WordNetLemmatizer
-import re,string,unicodedata
+import re,string
 from nltk.corpus import stopwords
 import nltk
 nltk.download('stopwords')
