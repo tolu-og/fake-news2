@@ -1,5 +1,5 @@
 flask
-nltk
+
 numpy      
 pip      
 xgboost
