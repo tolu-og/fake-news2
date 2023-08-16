@@ -3,3 +3,4 @@ numpy
 pip      
 xgboost
 scikit-learn
+gunicorn
