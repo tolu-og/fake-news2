@@ -2,4 +2,5 @@ flask
 nltk
 numpy      
 pip      
-scipy      
+xgboost
+scikit-learn
