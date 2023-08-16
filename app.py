@@ -2,9 +2,9 @@ from flask import Flask, request, render_template
 import pickle
 from nltk.stem import WordNetLemmatizer
 import re,string
-# from nltk.corpus import stopwords
-# import nltk
-# nltk.download('stopwords')
+from nltk.corpus import stopwords
+import nltk
+nltk.data.path.append('./nltk_data/')
 
 vector = pickle.load(open("vectorizer.pkl", 'rb'))
 model = pickle.load(open("model.pkl", 'rb'))
@@ -33,11 +33,11 @@ def lemmatize_text(text):
     text = ' '.join(lemmatizer.lemmatize(word) for word in text.split(' '))
     return text
 
-# stop_words = stopwords.words('english')
-# def remove_stopwords(text):
-#     ''' Remove stop words from text'''
-#     text = ' '.join(word for word in text.split(' ') if word not in stop_words)
-#     return text
+stop_words = stopwords.words('english')
+def remove_stopwords(text):
+    ''' Remove stop words from text'''
+    text = ' '.join(word for word in text.split(' ') if word not in stop_words)
+    return text
 
 
 app = Flask(__name__)
@@ -51,7 +51,7 @@ def prediction():
     if request.method == "POST":
         news = str(request.form['news'])
         news = clean_text(news)
-       # news = remove_stopwords(news)
+        news = remove_stopwords(news)
         news = lemmatize_text(news)
 
         prediction_prob = model.predict_proba(vector.transform([news]))
